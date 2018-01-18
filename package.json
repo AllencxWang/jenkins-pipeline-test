@@ -1,0 +1,17 @@
+{
+  "name": "jenkins-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.example.com:awang/jenkins.git",
+  "author": "Allen Wang <allen.wang@innovasolutions.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha ./tests"
+  },
+  "dependencies": {
+    "chai": "^4.1.2",
+    "express": "^4.16.2",
+    "mocha": "^4.1.0",
+    "supertest": "^3.0.0"
+  }
+}
