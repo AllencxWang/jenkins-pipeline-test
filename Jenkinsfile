@@ -6,9 +6,8 @@ node {
     
     stage ('Test') {
         echo 'testing....'
-        cd jenkins
-        npm install
-        npm test
+        sh 'npm install'
+        sh 'npm test'
     }
     
     stage ('End') {
