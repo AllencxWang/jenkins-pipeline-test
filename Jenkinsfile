@@ -5,7 +5,8 @@ node {
     }
 
     stage ('Download') {
-        sh 'curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -'
+        sh 'curl -o install_node.sh -s https://deb.nodesource.com/setup_8.x'
+        sh 'sudo sh install_node.sh'
         sh 'sudo apt-get install -y nodejs'
     }
     
