@@ -18,7 +18,9 @@ node {
         echo 'deploying....'
         sh 'tar czf app.tgz tests/* app.js index.js package.json yarn.lock'
         sh 'scp app.tgz root@app:~'
+        sh 'scp deploy.sh root@app:~'
         sh 'rm app.tgz'
+        sh 'ssh root@app sh deploy.sh'
     }
   
     stage ('End') {
