@@ -18,7 +18,7 @@ node {
         echo 'deploying....'
         sshagent (credentials: ['deploy-dev']) {
             sh 'tar czf app.tgz tests/* app.js index.js package.json yarn.lock'
-            sh 'scp -p 2222 app.tgz root@app'
+            sh 'scp -p 2222 app.tgz root@app:~'
             sh 'rm app.tgz'
         }
     }
