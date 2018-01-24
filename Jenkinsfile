@@ -16,11 +16,9 @@ node {
 
     stage ('Deploy') {
         echo 'deploying....'
-        sshagent (credentials: ['deploy-dev']) {
-            sh 'tar czf app.tgz tests/* app.js index.js package.json yarn.lock'
-            sh 'scp app.tgz root@app:~'
-            sh 'rm app.tgz'
-        }
+        sh 'tar czf app.tgz tests/* app.js index.js package.json yarn.lock'
+        sh 'scp app.tgz root@app:~'
+        sh 'rm app.tgz'
     }
   
     stage ('End') {
