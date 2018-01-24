@@ -12,7 +12,7 @@ describe('SAMPLE unit test', () => {
     .expect('Content-type',/text/)
     .expect(200) // THis is HTTP response
     .end((err, res) => {
-      expect(res.status).to.equal(400);
+      expect(res.status).to.equal(200);
       done();
     });
   });

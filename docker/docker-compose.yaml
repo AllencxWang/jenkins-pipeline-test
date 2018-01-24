@@ -1,0 +1,37 @@
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:latest
+    # build:
+    #   context: ./files
+    #   dockerfile: Dockerfile-jenkins
+    depends_on:
+      - gitlab
+    volumes:
+      - ./data/jenkins:/var/jenkins_home
+    ports:
+      - 8080:8080
+      - 50000:50000
+  gitlab:
+    restart: always
+    container_name: gitlab
+    image: gitlab/gitlab-ce:latest
+    volumes:
+      - ./data/gitlab/config:/etc/gitlab
+      - ./data/gitlab/logs:/var/log/gitlab
+      - ./data/gitlab/data:/var/opt/gitlab
+    ports:
+      - 80:80
+      - '22:22'
+      - 443:443
+  app:
+    container_name: app
+    build:
+      context: ./files
+      dockerfile: Dockerfile-app
+    depends_on:
+      - jenkins
+    ports:
+      - '2222:22'
+      - 3000:3000

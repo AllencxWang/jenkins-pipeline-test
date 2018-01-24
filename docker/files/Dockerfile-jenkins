@@ -1,0 +1,2 @@
+FROM jenkins/jenkins:latest
+RUN ssh-keygen -q -t rsa -N '' -f /var/jenkins_home/.ssh/id_rsa
