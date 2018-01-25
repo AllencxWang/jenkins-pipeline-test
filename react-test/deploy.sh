@@ -5,5 +5,6 @@ pids=$(pidof node)
 for pid in $pids; do
   kill $pid
 done
-# yarn install
+yarn install
 # yarn start &
+yarn run server &
