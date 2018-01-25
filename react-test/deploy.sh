@@ -8,3 +8,4 @@ done
 yarn install
 # yarn start &
 yarn run server &
+ls
