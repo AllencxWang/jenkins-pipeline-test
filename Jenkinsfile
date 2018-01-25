@@ -16,7 +16,7 @@ node {
 
     stage ('Deploy') {
         dir ('react-test') {
-            sh 'tar -zcvf app.tgz package.json public/* src/*'
+            sh 'tar -zcvf app.tgz index.js package.json public/* src/*'
             sh 'scp app.tgz root@app:~'
             sh 'scp deploy.sh root@app:~'
             sh 'rm app.tgz'
