@@ -18,10 +18,12 @@ node {
 
     stage ('Deploy') {
         echo 'deploying....'
-        sh 'tar czf app.tgz samuel-test'
-        sh 'scp app.tgz root@app:~'
-        sh 'scp deploy.sh root@app:~'
-        sh 'rm app.tgz'
-        sh 'ssh root@app sh deploy.sh'
+        dir ('samuel-test') {
+            sh 'tar -zcvf app.tgz package.json public/* src/*'
+            sh 'scp app.tgz root@app:~'
+            sh 'scp deploy.sh root@app:~'
+            sh 'rm app.tgz'
+            sh 'ssh root@app sh deploy.sh'
+        }
     }
 }
