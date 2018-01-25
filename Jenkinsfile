@@ -10,9 +10,10 @@ node {
     
     stage ('Test') {
         echo 'testing....'
-        sh 'cd samuel-test'
-        sh 'npm install'
-        sh 'npm test'
+        dir ('samuel-test') {
+            sh 'npm install'
+            sh 'npm test'
+        }
     }
 
     stage ('Deploy') {
