@@ -2,4 +2,8 @@
 tar -zxvf app.tgz
 rm app.tgz
 yarn install
-kill $(ps aux | grep 'react-scripts' | awk '{print $2}'); syarn start &
+pids=$(pidof node)
+for pid in $pids; do
+  kill $pid
+done
+yarn start &
