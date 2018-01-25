@@ -4,12 +4,10 @@ node {
     sh 'npm --version'
 
     stage ('Checkout') {
-        echo 'checkout....'
         git 'http://gitlab/awang/jenkins.git'
     }
     
     stage ('Test') {
-        echo 'testing....'
         dir ('samuel-test') {
             sh 'yarn install'
             sh 'CI=true yarn test'
@@ -17,7 +15,6 @@ node {
     }
 
     stage ('Deploy') {
-        echo 'deploying....'
         dir ('samuel-test') {
             sh 'tar -zcvf app.tgz package.json public/* src/*'
             sh 'scp app.tgz root@app:~'
