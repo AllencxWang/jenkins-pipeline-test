@@ -11,8 +11,8 @@ node {
     stage ('Test') {
         echo 'testing....'
         dir ('samuel-test') {
-            sh 'npm install'
-            sh 'npm test'
+            sh 'yarn install'
+            sh 'CI=true yarn test'
         }
     }
 
