@@ -10,20 +10,17 @@ node {
     
     stage ('Test') {
         echo 'testing....'
+        sh 'cd samuel-test'
         sh 'npm install'
         sh 'npm test'
     }
 
     stage ('Deploy') {
         echo 'deploying....'
-        sh 'tar czf app.tgz tests/* app.js index.js package.json yarn.lock'
+        sh 'tar czf app.tgz samuel-test'
         sh 'scp app.tgz root@app:~'
         sh 'scp deploy.sh root@app:~'
         sh 'rm app.tgz'
         sh 'ssh root@app sh deploy.sh'
-    }
-  
-    stage ('End') {
-        echo 'ending....'
     }
 }
