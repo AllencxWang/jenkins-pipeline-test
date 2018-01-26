@@ -20,7 +20,7 @@ node {
             sh 'scp app.tgz root@app:~'
             sh 'scp deploy.sh root@app:~'
             sh 'rm app.tgz'
-            sh 'ssh root@app ~/deploy.sh'
+            sh 'ssh root@app bash deploy.sh'
         }
     }
 }
