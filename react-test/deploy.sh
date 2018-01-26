@@ -7,4 +7,4 @@ for pid in $pids; do
 done
 yarn install
 # yarn start &
-npm run server
+npm run server &
