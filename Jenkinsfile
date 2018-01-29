@@ -16,11 +16,14 @@ node {
 
     stage ('Deploy') {
         dir ('react-test') {
-            sh 'tar -zcvf app.tgz index.js package.json public/* src/*'
+            sh 'tar -zcvf app.tgz index.js package.json stop_service.sh public/* src/*'
             sh 'scp app.tgz root@app:~'
-            sh 'scp deploy.sh root@app:~'
             sh 'rm app.tgz'
-            sh 'ssh root@app sh deploy.sh >/dev/null 2>&1'
+            sh 'ssh root@app "tar -zxvf app.tgz"'
+            sh 'ssh root@app "rm app.tgz"'
+            sh 'ssh root@app "sh stop_service.sh"'
+            sh 'ssh root@app "yarn install"'
+            sh 'ssh root@app "yarn run server &"'
         }
     }
 }
