@@ -23,7 +23,7 @@ node {
             sh 'ssh root@app "rm app.tgz"'
             sh 'ssh root@app "sh stop_service.sh"'
             sh 'ssh root@app "yarn install"'
-            sh 'ssh root@app "yarn run server &"'
+            sh 'ssh root@app "yarn run server >/dev/null 2>&1 &"'
         }
     }
 }
