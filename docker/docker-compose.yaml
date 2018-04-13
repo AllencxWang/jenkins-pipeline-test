@@ -9,7 +9,7 @@ services:
     depends_on:
       - gitlab
     volumes:
-      - ./data/jenkins:/var/jenkins_home
+      - ./volume/jenkins:/var/jenkins_home
     ports:
       - 8080:8080
       - 50000:50000
@@ -18,9 +18,9 @@ services:
     container_name: gitlab
     image: gitlab/gitlab-ce:latest
     volumes:
-      - ./data/gitlab/config:/etc/gitlab
-      - ./data/gitlab/logs:/var/log/gitlab
-      - ./data/gitlab/data:/var/opt/gitlab
+      - ./volume/gitlab/config:/etc/gitlab
+      - ./volume/gitlab/logs:/var/log/gitlab
+      - ./volume/gitlab/data:/var/opt/gitlab
     ports:
       - 80:80
       - '22:22'

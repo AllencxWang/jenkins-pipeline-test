@@ -21,7 +21,7 @@ yarn-debug.log*
 yarn-error.log*
 
 /.vscode
-/docker/data/jenkins/*
-/docker/data/gitlab/*
-!/docker/data/jenkins/.gitkeep
-!/docker/data/gitlab/.gitkeep
+/docker/volume/jenkins/*
+/docker/volume/gitlab/*
+!/docker/volume/jenkins/.gitkeep
+!/docker/volume/gitlab/.gitkeep
